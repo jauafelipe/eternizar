@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#09070a">
+  <title>Tenho uma surpresa para você ❤️</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{width:100%;height:100%;overflow:hidden}
+    body{background:#09070a;color:#fff;font-family:"DM Sans",sans-serif}
+    .entry{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#09070a;z-index:10}
+    .entry:before{content:"";position:absolute;inset:-20%;background:radial-gradient(circle at 50% 45%,rgba(255,79,154,.18),transparent 25%),radial-gradient(circle at 15% 80%,rgba(255,79,154,.10),transparent 25%),radial-gradient(circle at 85% 15%,rgba(255,79,154,.10),transparent 25%);animation:glow 5s ease-in-out infinite alternate}
+    .entry:after{content:"";position:absolute;width:55vmin;height:55vmin;border:1px solid rgba(255,79,154,.18);border-radius:50%;box-shadow:0 0 80px rgba(255,79,154,.08),inset 0 0 80px rgba(255,79,154,.04);animation:spin 18s linear infinite}
+    .content{position:relative;z-index:2;text-align:center;width:min(90%,650px);padding:30px;animation:rise 1.2s ease both}
+    .heart{font-size:42px;color:#ff4f9a;text-shadow:0 0 35px rgba(255,79,154,.6);margin-bottom:25px;animation:beat 1.8s ease-in-out infinite}
+    .kicker{text-transform:uppercase;letter-spacing:.28em;font-size:10px;color:#ff8dc0;font-weight:700;margin-bottom:24px}
+    h1{font-family:"Cormorant Garamond",serif;font-weight:500;font-size:clamp(58px,9vw,100px);line-height:.86;letter-spacing:-.04em}
+    h1 em{display:inline-block;color:#ff4f9a;font-style:italic}
+    .text{max-width:470px;margin:28px auto 38px;color:#aa9da5;line-height:1.8;font-size:14px}
+    button{border:0;cursor:pointer;background:#ff4f9a;color:#09070a;padding:17px 25px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.13em;border-radius:3px;box-shadow:0 15px 50px rgba(255,79,154,.22);transition:.3s}
+    button:hover{transform:translateY(-3px);box-shadow:0 20px 65px rgba(255,79,154,.35)}
+    button span{margin-right:12px}
+    .hint{display:block;margin-top:17px;color:#665c63;font-size:9px;text-transform:uppercase;letter-spacing:.2em}
+    .opening{animation:exit 1s cubic-bezier(.7,0,.2,1) forwards}
+    @keyframes rise{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes beat{0%,100%{transform:scale(1)}50%{transform:scale(1.12)}}
+    @keyframes glow{from{transform:scale(1)}to{transform:scale(1.12)}}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    @keyframes exit{to{opacity:0;transform:scale(1.04);visibility:hidden}}
+  </style>
+</head>
+<body>
+  <div class="entry" id="entry">
+    <div class="content">
+      <div class="heart">♥</div>
+      <p class="kicker">uma surpresa foi preparada para você</p>
+      <h1>Tenho uma<br><em>surpresa</em> para você...</h1>
+      <p class="text">Antes de entrar, quero te pedir uma coisa: abra com calma. Fiz isso especialmente para você. ❤️</p>
+      <button id="enter"><span>✨</span> abrir minha surpresa →</button>
+      <small class="hint">toque para entrar</small>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('enter').addEventListener('click', function(){
+      const entry=document.getElementById('entry');
+      try { sessionStorage.setItem('surpriseOpened','1'); } catch(e) {}
+      entry.classList.add('opening');
+      setTimeout(function(){ window.location.href='site.html'; }, 850);
+    });
+  </script>
+</body>
+</html>
